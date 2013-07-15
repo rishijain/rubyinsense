@@ -9,5 +9,8 @@ class Question
   has_many :comments
 
   validates :statement, :presence => true
-
+  
+  def question_posted?(current_user)
+    user == current_user
+  end
 end

@@ -41,4 +41,9 @@ class QuestionsController < ApplicationController
     @comment = @question.comments.build
   end
 
+  def destroy
+    question = current_user.questions.find(params[:id])
+    question.destroy
+    redirect_to questions_path
+  end
 end

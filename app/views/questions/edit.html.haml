@@ -1,4 +1,9 @@
-%h2 Edit question
+%h2 Edit Question
 
 = simple_form_for @question, :url => question_path, :type => 'post' do |f|
-  = render :partial => 'form', :locals => { :f => f }
+  .row
+    .span4
+    .span4
+      .form-inputs
+        = render :partial => 'form', :locals => { :f => f }
+        = f.submit 'Edit Question', class: 'btn btn-info'

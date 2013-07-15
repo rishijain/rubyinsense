@@ -8,3 +8,6 @@
         %td
           = index + 1
           = link_to quest.statement, path_to_view(quest)
+          .pull-right
+            = link_to 'Remove', question_path(quest), method: :delete, class: 'btn btn-danger' if quest.question_posted?(current_user) 
+            = link_to 'Edit', edit_question_path(quest), class: 'btn btn-primary' if quest.question_posted?(current_user) 
