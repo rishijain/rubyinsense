@@ -786,3 +786,28 @@ table code {
     padding-bottom: 20px;
     padding-top: 20px;
 }
+
+.bar{
+  z-index: 10000;
+  position: absolute;
+  left: 30px;
+  top: -5px;
+}
+
+.title {
+  left: 90px;
+  font-size: 25px;
+  font-weight: bold;
+  top: 7px;
+  color: white;
+  z-index: 10000;
+  position: absolute;
+}
+.custom{
+  color:  #E42217;
+  font-size: 65px;
+}
+
+.brand{
+  margin: 0px !important;
+}

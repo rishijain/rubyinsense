@@ -8,5 +8,14 @@ namespace :db do
       end
     end
   end
+
+  task :update_image_url => :environment do
+    users = User.all
+    unless users.empty?
+      users.each do |user|
+        user.add_image_url if user.image_url == ''
+      end
+    end
+  end
 end
 

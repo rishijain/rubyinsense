@@ -1,18 +1,23 @@
 %section
-  %span.label.label-success By :- 
-  = @question.user.email
+  = render 'image'
+  = @question.user.twitter_handle
   .span2.pull-right
     %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
 %section
   %pre.prettyprint
     %h4= "Question: #{@question.statement}"
 %legend Answers
+.btn{id: "hide_or_show"} Show answers
 - @question.answers.each do |ans|
   .bs-docs-example
-    %span.label.label-success Answer by :- 
-    = ans.user.email 
+    = render 'image'
+    = ans.user.twitter_handle 
     .pull-right
       - if user_signed_in?
+        %span
+          = link_to "javascript:HideOrShow('#{ans.id}');", title: 'Show', id: "a_#{ans.id}" do
+            %h4.icon-chevron-up.test
+        &nbsp
         - if current_user == ans.user
           %span
             = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
@@ -21,13 +26,30 @@
           %span
             = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove' do
               %h4.icon-trash 
+          &nbsp
         - else
           %div{id: ans.id}
             = render 'vote', answer: ans
-  %pre.prettyprint
+  %pre.prettyprint.all{id: "q_#{ans.id}", style: "display: none"}
     = ans.statement
-
 %legend Comments
 = render 'comment'
 = simple_form_for [@question, @comment] do |f|
   = render 'comments/form', f: f
+
+:javascript
+  $("#hide_or_show").click(function(){
+    $(this).text($(this).text() == "Hide answers" ? "Show answers" : "Hide answers");
+    $(".all").each(function(){
+      if($(this).attr("style") == "display: none"){
+        $(this).attr("style", "display: block");
+      }
+      else{
+        $(this).attr("style", "display: none");
+      }
+    });
+    var text = $(".test").attr("class")
+    if(text == "icon-chevron-up test"){
+      $(".test").attr("class","icon-chevron-down test");
+    }
+  });

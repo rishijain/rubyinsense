@@ -7,8 +7,11 @@ class User
   field :encrypted_password,  :type => String, :default => ''
   field :provider,            :type => String, :default => 'Twitter'
   field :uid,                 :type => Integer
-  field :twitter_handle,      :type => String  
-  
+  field :fname,               :type => String
+  field :lname,               :type => String
+  field :twitter_handle,      :type => String
+  field :image_url,           :type => String, :default => ''
+
   has_many :questions
   has_many :answers
   has_many :comments
@@ -16,6 +19,7 @@ class User
   validates :uid, :email, presence: true
   
   after_create :set_twitter_handle
+  after_create :add_image_url
 
   def password_required?
     false
@@ -26,5 +30,9 @@ class User
     self.set(:twitter_handle, handle)
   end
 
+  def add_image_url
+    image  = Twitter.user(self.uid)[:profile_image_url] 
+    self.set(:image_url, image)
+  end
 end
 

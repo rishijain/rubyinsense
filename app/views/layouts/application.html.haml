@@ -1,5 +1,8 @@
 - content_for :signed_in_options do
+  .nav.pull-right
   %ul.nav.pull-right
+    %li
+      = render "questions/image"
     %li
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
         = current_user.try(:email) || 'Options' 
@@ -11,6 +14,8 @@
           %a{:href => my_questions_questions_path} My Questions
         %li
           %a{:href => new_question_path} Add a Question
+        %li
+          %a{:href => edit_user_registration_path} My Profile
         %li.divider
         %li
           = link_to 'Log Out', destroy_user_session_path, method: :delete
@@ -34,11 +39,15 @@
           = yield :signed_in_options
         - else
           = yield :signed_out_options
-        .pull-left
-          = link_to 'RubyInSense', root_path, class: :brand 
+    %span
+      .icon-bookmark.custom.bar
+    .title
+      = link_to root_path do
+        RubyInsense
   %br
   %br
   %body
     .container
+      = flash[:notice]
       = yield(:box)
       = yield
