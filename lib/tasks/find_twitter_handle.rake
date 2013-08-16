@@ -17,5 +17,14 @@ namespace :db do
       end
     end
   end
+
+  task :update_twitter_url => :environment do
+    users = User.all
+    unless users.empty?
+      users.each do |user|
+        user.add_twitter_url if user.twitter_url == ''
+      end
+    end
+  end
 end
 

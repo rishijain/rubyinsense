@@ -5,7 +5,7 @@
 .row
   .bs-example
     = render :partial => 'image', :locals => {:user => @question.user}
-    = @question.user.twitter_handle
+    = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
   %pre.highlight.prettyprint
     %h4
       = raw code_highlight(@question.statement)
@@ -20,7 +20,7 @@
     .row
       .bs-example
         = render :partial => 'image', :locals => {:user => ans.user}
-        = ans.user.twitter_handle 
+        = link_to ans.user.twitter_handle, ans.user.twitter_url, :target => '_blank' 
         .pull-right
           - if user_signed_in?
             - if current_user == ans.user

@@ -13,7 +13,7 @@
             By 
             = render :partial => "image", :locals => {:user => r.user}
             %b
-              = r.user.twitter_handle
+              = link_to r.user.twitter_handle, r.user.twitter_url, :target => '_blank'
             %br
             %i.icon-calendar
             %small
