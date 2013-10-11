@@ -47,4 +47,9 @@
 
 :javascript
   var question = #{@question.to_json}
-  var current_user_question_rating = #{@question.user_mark(current_user) || 0}
+- if user_signed_in?
+  :javascript
+    var current_user_question_rating = #{@question.user_mark(current_user)}
+- else
+  :javascript
+    var current_user_question_rating = 0 
