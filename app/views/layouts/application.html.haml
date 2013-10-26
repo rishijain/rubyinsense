@@ -40,10 +40,10 @@
     .container
       #container
         = yield(:pills)
-        %br
         = render 'shared/messages'
         = yield
         - if params[:controller] == "questions" and params[:action] == "index"
-          %ul.nav.nav-pills
-            %li.active{:style => "float:right;"}
-              = link_to 'Team', '/about-us'
+          #footer
+            %legend
+            = link_to 'Team', '/about-us', class: 'btn btn-default pull-right'
+          .clearfix
