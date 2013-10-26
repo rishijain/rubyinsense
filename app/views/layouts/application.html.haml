@@ -21,8 +21,6 @@
       = link_to 'Home', root_path
     %li.active
       = link_to 'My Questions', my_questions_questions_path 
-    %li.active
-      = link_to 'Team', '/about-us' 
     - if user_signed_in?
       = yield :signed_in_options
     - else
@@ -42,5 +40,10 @@
     .container
       #container
         = yield(:pills)
-        = flash[:notice]
+        %br
+        = render 'shared/messages'
         = yield
+        - if params[:controller] == "questions" and params[:action] == "index"
+          %ul.nav.nav-pills
+            %li.active{:style => "float:right;"}
+              = link_to 'Team', '/about-us'

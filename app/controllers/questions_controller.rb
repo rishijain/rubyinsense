@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.highest_rated
+    @questions = Question.highest_rated(100)
   end
 
   def my_questions

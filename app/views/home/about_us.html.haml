@@ -1,0 +1,20 @@
+.first-section
+  %p We both work at #{link_to 'Josh Software', 'http://joshsoftware.com', :target => "_blank"}.
+
+.second-section
+  .member-1
+    = image_tag 'pratik.jpg', :class => "profile-pic"
+    %div
+      = link_to 'Pratik Shah', 'http://twitter.com/pratik141988', :class => "profile-name", :target => "_blank"
+  .member-2
+    = image_tag 'rishi.jpg', :class => "profile-pic"
+    %div
+      = link_to 'Rishi Jain', 'http://twitter.com/jainrishi15', :class => "profile-name", :target => "_blank"
+
+
+.third-section
+  %p.contributor-text
+    We thank our contributors. Here is the list:
+  = link_to image_tag('pramod.jpg', :class => "contributor contributor-1"), 'https://github.com/pramodshinde', :target => "_blank" 
+  = link_to image_tag('siva.jpg', :class => "contributor contributor-2"), 'https://github.com/sivagollapalli', :target => "_blank" 
+  = link_to image_tag('deepak.jpeg', :class => "contributor contributor-3"), 'https://github.com/SpiderGears', :target => "_blank" 
