@@ -1,5 +1,6 @@
 Rubyinsense::Application.routes.draw do
   match '/home' => 'home#index'
+  match '/about-us' => 'home#about_us'
   match '/auth/:provider/callback' => 'home#create'
   devise_for :users, :controllers => {:registrations => 'registrations'}
 

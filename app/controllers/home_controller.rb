@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    #redirect_to questions_path if current_user
   end
 
   def create
@@ -13,5 +12,8 @@ class HomeController < ApplicationController
       session[:uid] = omniauth['uid']
       redirect_to new_user_registration_url
     end
+  end
+
+  def about_us
   end
 end
