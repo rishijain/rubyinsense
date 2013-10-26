@@ -51,7 +51,7 @@
   var question = #{@question.to_json}
 - if user_signed_in?
   :javascript
-    var current_user_question_rating = #{@question.user_mark(current_user)}
+    var current_user_question_rating = #{@question.user_mark(current_user) || 0}
 - else
   :javascript
     var current_user_question_rating = 0 
