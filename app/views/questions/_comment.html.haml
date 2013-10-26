@@ -1,23 +1,24 @@
-- comments = @question.comments.select{|c| !c.new_record?} 
-- if comments.any?
-  - comments.each do |r|
-    .well
-      .container-fluid
-        .row
-          .span6
-            %pre
-              = r.description
-      .container-fluid
-        .row
-          .span6
-            By 
-            = render :partial => "image", :locals => {:user => r.user}
-            %b
-              = link_to r.user.twitter_handle, r.user.twitter_url, :target => '_blank'
-            %br
-            %i.icon-calendar
-            %small
-              = r.created_at.strftime("Commented on %b %d %Y at %H:%M")
-          .pull-right
-            - if r.user == current_user
-              = link_to 'Remove', question_comment_path(@question, r), method: :delete, class: 'btn btn-danger'
+.row
+  .col-lg-2
+  .col-lg-8
+    - comments = @question.comments.select{|c| !c.new_record?} 
+    - if comments.any?
+      - comments.each do |r|
+        .container-fluid
+          .row
+            .span6
+              = render :partial => "image", :locals => {:user => r.user}
+              %b
+                = link_to r.user.twitter_handle, r.user.twitter_url, :target => '_blank'
+              %br
+              .pull-right
+                %i.icon-calendar
+                %small
+                  = r.created_at.strftime("Commented on %b %d %Y at %H:%M")
+          .row
+            .span6
+              %pre
+                = r.description
+            .pull-right
+              - if r.user == current_user
+                = link_to 'Remove', question_comment_path(@question, r), method: :delete, class: 'btn btn-danger'

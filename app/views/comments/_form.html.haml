@@ -1,4 +1,8 @@
-= f.input :description, :required => true, :as => :text, :input_html => { :rows => 4, class: "form-control"}
-= f.input :question_id, :as => :hidden
-%br
-= f.submit 'Add Comment', class: 'btn btn-info'
+.row
+  .col-lg-2
+  .col-lg-6
+    = simple_form_for [@question, @comment] do |f|
+      = f.input :description, :required => true, :as => :text, placeholder: 'Comment..', :input_html => { :rows => 4, class: "form-control"}
+      = f.input :question_id, :as => :hidden
+      %br
+      = f.submit 'Add Comment', class: 'btn btn-success'

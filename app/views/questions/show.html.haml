@@ -38,12 +38,14 @@
       %pre.highlight.prettyprint
         = raw code_highlight(ans.statement)
 
-%legend 
-  %b Comments
-= render 'comment'
-- if user_signed_in?
-  = simple_form_for [@question, @comment] do |f|
-    = render 'comments/form', f: f
+.row
+  .col-lg-2
+  .col-lg-8
+    %legend 
+      %b Comments
+    = render 'comment'
+    - if user_signed_in?
+      = render 'comments/form'
 
 :javascript
   var question = #{@question.to_json}
