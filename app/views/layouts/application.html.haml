@@ -38,5 +38,6 @@
     .container
       #container
         = yield(:pills)
-        = flash[:notice]
+        %br
+        = render 'shared/messages'
         = yield

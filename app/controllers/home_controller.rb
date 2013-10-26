@@ -1,8 +1,4 @@
 class HomeController < ApplicationController
-  def index
-    #redirect_to questions_path if current_user
-  end
-
   def create
     omniauth = request.env["omniauth.auth"]
     user = User.where(uid: omniauth['uid']).first
